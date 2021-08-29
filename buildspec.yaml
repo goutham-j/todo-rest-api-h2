@@ -23,5 +23,4 @@ phases:
 
 artifacts:
   files:
-    - location
-    - location
+    - target/todo-rest-api-h2-0.0.1.jar
