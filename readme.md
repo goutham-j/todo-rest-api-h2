@@ -111,25 +111,29 @@ Hello World
 ## Build Spec for AWS Code Pipeline
 ```
 version: 0.2
-            
+  
 phases:
   install:
+    on-failure: ABORT
     runtime-versions:
       java: openjdk8
     commands:
       - echo install
   pre_build:
+    on-failure: CONTINUE
     commands:
-      - echo pre_build
+      - echo pre-build
   build:
+    on-failure: ABORT
     commands:
-      - mvn package
+      - mvn clean package
       - echo build
   post_build:
+    on-failure: CONTINUE
     commands:
-      - echo post_build
+      - echo post-build
 
 artifacts:
   files:
-    - target/spring-boot-todo-rest-api-h2-aws-codepipeline-0.0.1-SNAPSHOT.jar
+    - target/todo-rest-api-h2-0.0.1.jar
 ```
